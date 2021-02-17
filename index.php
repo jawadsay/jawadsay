@@ -1,28 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html>
+     
+     <head>
+     	<title>Formulaire PhP</title>
+        <meta charset="utf-8"/>
+     </head>
 
-require 'Controleur/Controleur.php';
+     <body>
+    <?php
 
-try {
-    if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'billet') {
-            if (isset($_GET['id'])) {
-                $idBillet = intval($_GET['id']);
-                if ($idBillet != 0) {
-                    billet($idBillet);
-                }
-                else
-                    throw new Exception("Identifiant de billet non valide");
-            }
-            else
-                throw new Exception("Identifiant de billet non défini");
-        }
-        else
-            throw new Exception("Action non valide");
-    }
-    else {  // aucune action définie : affichage de l'accueil
-        accueil();
-    }
-}
-catch (Exception $e) {
-    erreur($e->getMessage());
-}
+    $definition = fopen("testphp.txt", "r");
+    $affichagedef=fgets($definition, 10000);
+    echo $affichagedef;
+    fclose($definition);
+     ?>
+     </body>
+</html>
